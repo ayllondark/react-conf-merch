@@ -1,7 +1,18 @@
 import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
+import Metahead from '../components/Metahead.jsx'
 import AppContext from '../context/AppContext.js';
 import '../styles/components/Checkout.css';
+
+const meta = (
+  <Metahead
+    title="Lista de Pedidos Conf Merch"
+    description="Encuentra todos tus productos favoritos"
+    image="https://davecast.s3.amazonaws.com/avatarnegativo.jpg"
+    url="https://reactconf.xyz/"
+  />
+);
+
 
 const Checkout = () => {
   const { state: { cart }, removeFromCart } = useContext(AppContext);
@@ -17,6 +28,9 @@ const Checkout = () => {
   }
 
   return (
+    <>
+    {meta}
+
     <div className="Checkout">
       <div className="Checkout-content">
        {cart.length > 0  ?  <h3>Lista de Pedidos:</h3> : <h3>Sin Pedidos...</h3> }
@@ -52,6 +66,7 @@ const Checkout = () => {
       
 
     </div>
+    </>
   )
 }
 
